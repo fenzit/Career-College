@@ -101,7 +101,7 @@ function resume() {
   const student=getStudent();
   const blocks=[
     ['Основная информация',[['photo','Фото',{type:'file',accept:'image/png,image/jpeg,image/webp',help:'PNG, JPEG или WebP, до 1 МБ.'}],['first','Имя',required],['last','Фамилия',required],['city','Город',requiredSelect(CITIES)],['title','Желаемая профессия',required]]],
-    ['Обучение',[['specialty','Специальность',requiredSelect(valuesFor('specialties'))],['course','Курс',requiredSelect(COURSES)],['group','Группа',requiredSelect(valuesFor('groups'))],['graduation','Предполагаемый год выпуска']]],
+    ['Обучение',[['specialty','Специальность',requiredSelect(valuesFor('specialties'))],['course','Курс',requiredSelect(COURSES)],groupField,['graduation','Предполагаемый год выпуска']]],
     ['О себе и навыки',[['about','Кратко о себе',requiredArea],['skills','Навыки',{...required,help:'Перечислите навыки через запятую, например HTML, CSS.'}],['experience','Практика и опыт',{type:'textarea'}],['languages','Языки'],['achievements','Достижения',{type:'textarea'}],['certificates','Сертификаты',{type:'textarea'}]]],
     ['Предпочтения',[['interests','Какое предложение ищете',requiredSelect(TYPES)],['format','Формат', {choices:FORMATS}],['employment','Занятость',{choices:SCHEDULES}],['start','Готовность начать',{type:'date'}]]],
     ['Контакты',[['email','Электронная почта',{type:'email',required:true}],['phone','Телефон',{type:'tel'}],['professional','Профессиональная ссылка',{type:'url'}]]]

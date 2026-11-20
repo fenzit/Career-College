@@ -199,6 +199,7 @@ function legal(kind) {
 const required = {required:true};
 const requiredSelect = choices => ({required:true,choices});
 const requiredArea = {type:'textarea',required:true};
+const groupField = ['group','Группа',{...required,placeholder:'Например, ИС-32'}];
 const passwordFields = () => [
   ['password','Пароль',{type:'password',required:true,min:8,auto:'new-password',help:'Не менее 8 символов.'}],
   ['repeat','Повторите пароль',{type:'password',required:true,min:8,auto:'new-password'}]
@@ -234,7 +235,7 @@ function register(role) {
   const descriptions=student ? [
     ['last','Фамилия',{...required,auto:'family-name'}],['first','Имя',{...required,auto:'given-name'}],['middle','Отчество'],
     ['email','Электронная почта',{...required,type:'email',auto:'email'}],
-    ['specialty','Специальность',requiredSelect(valuesFor('specialties'))],['course','Курс',requiredSelect(COURSES)],['group','Группа',requiredSelect(valuesFor('groups'))]
+    ['specialty','Специальность',requiredSelect(valuesFor('specialties'))],['course','Курс',requiredSelect(COURSES)],groupField
   ] : [
     ['title','Название компании',required],['area','Сфера деятельности',requiredSelect(valuesFor('areas'))],['city','Город',requiredSelect(CITIES)],['website','Сайт компании',{type:'url'}],
     ['representative','Имя и фамилия представителя',required],['position','Должность представителя',required],

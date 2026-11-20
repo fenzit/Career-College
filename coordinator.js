@@ -17,7 +17,8 @@ function accountReviewList(kind) {
   const student=kind==='students';
   const selected=memory.filters??{};
   const statusOptions=[S.pending,S.confirmed,S.revision,S.suspended];
-  const filters=student?[['specialty','Специальность',valuesFor('specialties')],['course','Курс',COURSES],['group','Группа',valuesFor('groups')],['status','Статус аккаунта',statusOptions]]:
+  const groups=[...new Set(state.students.map(item=>item.group).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ru',{numeric:true}));
+  const filters=student?[['specialty','Специальность',valuesFor('specialties')],['course','Курс',COURSES],['group','Группа',groups],['status','Статус аккаунта',statusOptions]]:
     [['status','Статус аккаунта',statusOptions],['area','Сфера деятельности',valuesFor('areas')],['city','Город',CITIES]];
   const list=(student?state.students:state.companies).filter(item=>matches(item,selected) &&
     contains(student?[studentName(item),item.email,item.group].join(' '):[item.title,item.email].join(' ')));
